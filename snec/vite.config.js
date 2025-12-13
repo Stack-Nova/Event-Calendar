@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'https://kiris-ka-gana-sunega.onrender.com/'
+      '/api': 'http://localhost:8000/'
     }
   }
 })

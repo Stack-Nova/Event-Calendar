@@ -16,7 +16,7 @@ const SignupPage = () => {
     const password = e.target.password.value;
 
     try {
-      const response = await fetch('https://kiris-ka-gana-sunega.onrender.com/api/signup', {
+      const response = await fetch('http://localhost:8000/api/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password }),
