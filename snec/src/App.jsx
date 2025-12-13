@@ -116,7 +116,7 @@ function Dashboard({ isAuthenticated, refetchEventsRef, viewYear, setViewYear, v
   // Ref for refetching events from outside
   const fetchEvents = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/events");
+      const response = await fetch("https://event-calendar-backend-1bzo.onrender.com/api/events");
       if (!response.ok) throw new Error("Failed to fetch events");
       const data = await response.json();
       const mappedEvents = data.map(ev => ({
@@ -217,7 +217,7 @@ function Dashboard({ isAuthenticated, refetchEventsRef, viewYear, setViewYear, v
       return;
     }
     if (range) {
-      const downloadUrl = `http://localhost:8000/api/reports/download?range=${range}`;
+      const downloadUrl = `https://event-calendar-backend-1bzo.onrender.com/api/reports/download?range=${range}`;
       const a = document.createElement('a');
       a.href = downloadUrl;
       a.download = '';
@@ -237,7 +237,7 @@ function Dashboard({ isAuthenticated, refetchEventsRef, viewYear, setViewYear, v
       return;
     }
     const range = JSON.stringify({ start: customStart, end: customEnd });
-    const downloadUrl = `http://localhost:8000/api/reports/download?range=${encodeURIComponent(range)}`;
+    const downloadUrl = `https://event-calendar-backend-1bzo.onrender.com/api/reports/download?range=${encodeURIComponent(range)}`;
     const a = document.createElement('a');
     a.href = downloadUrl;
     a.download = '';

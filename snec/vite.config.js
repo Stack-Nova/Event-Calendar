@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'http://localhost:8000/'
+      '/api': 'https://event-calendar-backend-1bzo.onrender.com/'
     }
   }
 })

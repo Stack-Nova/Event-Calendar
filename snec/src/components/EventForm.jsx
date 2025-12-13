@@ -36,7 +36,7 @@ export default function EventForm({ onEventAdded }) {
         date: formattedDate
       };
 
-      const res = await fetch('http://localhost:8000/api/events', {
+      const res = await fetch('https://event-calendar-backend-1bzo.onrender.com/api/events', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(eventData)

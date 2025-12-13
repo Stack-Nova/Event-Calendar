@@ -19,7 +19,7 @@ export default function CalendarContainer() {
   useEffect(() => {
     async function fetchEvents() {
       try {
-        const response = await fetch("http://localhost:8000/api/events");
+        const response = await fetch("https://event-calendar-backend-1bzo.onrender.com/api/events");
         if (!response.ok) throw new Error("Failed to fetch events");
         const data = await response.json();
         setEvents(data.map(ev => ({

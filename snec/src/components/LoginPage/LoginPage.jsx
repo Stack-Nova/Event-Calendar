@@ -21,7 +21,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
       }
       // Store admin secret in sessionStorage
       sessionStorage.setItem('adminSecret', adminSecret);
-      const response = await fetch('http://localhost:8000/api/admin/pending-signups', {
+      const response = await fetch('https://event-calendar-backend-1bzo.onrender.com/api/admin/pending-signups', {
         headers: {
           'Content-Type': 'application/json',
           'x-admin-secret': adminSecret,
@@ -41,7 +41,7 @@ const LoginPage = ({ setIsAuthenticated }) => {
     const password = e.target.password.value.trim();
 
     try {
-      const response = await fetch('http://localhost:8000/api/login', {
+      const response = await fetch('https://event-calendar-backend-1bzo.onrender.com/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

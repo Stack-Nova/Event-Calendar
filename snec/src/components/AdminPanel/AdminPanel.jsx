@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminPanel.css';
 
-const API_BASE = 'http://localhost:8000/api/admin';
+const API_BASE = 'https://event-calendar-backend-1bzo.onrender.com/api/admin';
 
 function apiFetch(path, adminSecret, options = {}) {
   return fetch(API_BASE + path, {

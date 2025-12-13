@@ -28,7 +28,7 @@
 //       return;
 //     }
 //     if (range) {
-//       const downloadUrl = `http://localhost:8000/api/reports/download?range=${range}`;
+//       const downloadUrl = `https://event-calendar-backend-1bzo.onrender.com/api/reports/download?range=${range}`;
 //       triggerDownload(downloadUrl);
 //     }
 //     resetDialog();
@@ -40,7 +40,7 @@
 //       return;
 //     }
 //     const range = JSON.stringify({ start: customStart, end: customEnd });
-//     const downloadUrl = `http://localhost:8000/api/reports/download?range=${encodeURIComponent(range)}`;
+//     const downloadUrl = `https://event-calendar-backend-1bzo.onrender.com/api/reports/download?range=${encodeURIComponent(range)}`;
 //     triggerDownload(downloadUrl);
 //     resetDialog();
 //   };
