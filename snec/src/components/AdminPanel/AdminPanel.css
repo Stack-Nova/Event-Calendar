@@ -1,0 +1,202 @@
+/* Admin Panel Styles */
+
+.admin-panel-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 24px;
+  backdrop-filter: blur(12px);
+  background-color: rgba(43, 52, 69, 0.4); /* transparent glass */
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+  animation: slideFadeIn 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  z-index: 2;
+  /* overflow:hidden; */
+}
+
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.admin-panel-header:h2{
+  overflow:hidden;
+}
+.admin-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  overflow:hidden;
+}
+
+.admin-section {
+  margin-bottom: 32px;
+  /* overflow:hidden; */
+}
+
+.admin-section-title {
+  color: #e63946;
+  margin-bottom: 12px;
+  margin-top: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  overflow:hidden;
+}
+
+.admin-user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px; /* Set your desired height */
+  overflow-y: auto;  /* Enable vertical scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.admin-user-list::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.admin-user-item {
+  background: #f7f7fa;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #222;
+}
+
+.admin-user-item:hover {
+  background: #f0f0f5;
+}
+
+.admin-action-btn {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-left: 8px;
+  overflow:hidden;
+}
+
+.admin-action-btn:disabled {
+  background: #888;
+  color: #eee;
+  cursor: not-allowed;
+}
+
+.admin-action-btn:hover:not(:disabled) {
+  background-color: #d62828;
+} 
+
+/* Calendar Skeleton Styles for Mobile & Tablet */
+.calendar-container {
+  max-width: 350px;
+  margin: 1.5rem auto;
+  padding: 1.2rem;
+  background: #eaf4fb;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  font-family: 'Inter', sans-serif;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  color: #6b7a8f;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.3rem;
+}
+
+.calendar-date {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 1rem;
+  color: #2b3445;
+}
+
+.calendar-date.selected {
+  background: #1976d2;
+  color: #fff;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .calendar-container {
+    max-width: 98vw;
+    padding: 0.7rem;
+    border-radius: 12px;
+  }
+  .calendar-date {
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 0.95rem;
+  }
+  .calendar-header {
+    font-size: 1rem;
+  }
+} 
+
+/* --- Responsive Menu Bar Styles --- */
+/* All styles related to .admin-menu-bar, .hamburger, .admin-mobile-menu, and @keyframes fadeInMenu have been removed. */
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .admin-panel-container {
+    max-width: 95vw;
+    margin: 1rem auto;
+    padding: 16px;
+  }
+  
+  .admin-user-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .admin-user-item .event-info {
+    margin-right: 0;
+    width: 100%;
+  }
+  
+  .admin-action-btn {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+.headtitle{
+  overflow: hidden;
+}
+h2{
+  overflow:hidden ;
+}

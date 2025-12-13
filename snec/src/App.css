@@ -1,0 +1,1918 @@
+/* === Global CSS Variables for Mobile-First Design === */
+:root {
+  /* Color palette (dark mode, blue-centric, accessible) */
+  --color-bg: #101624;
+  --color-surface: #1a2236;
+  --color-primary: #1976d2;
+  --color-primary-contrast: #fff;
+  --color-accent: #43a047;
+  --color-danger: #e63946;
+  --color-border: #2a3550;
+  --color-card: #232b43;
+  --color-text: #f5f6fa;
+  --color-muted: #b0b8c9;
+  --color-focus: #90caf9;
+  --color-shadow: rgba(25, 118, 210, 0.12);
+
+  /* Spacing scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+
+  /* Font scale (responsive, mobile-first) */
+  --font-xs: clamp(0.85rem, 1vw, 0.95rem);
+  --font-sm: clamp(1rem, 2vw, 1.1rem);
+  --font-md: clamp(1.15rem, 2.5vw, 1.25rem);
+  --font-lg: clamp(1.35rem, 3vw, 1.5rem);
+  --font-xl: clamp(1.7rem, 4vw, 2.2rem);
+
+  /* Touch target */
+  --touch-size: 44px;
+}
+
+html, body, #root {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-size: var(--font-sm);
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: hidden;
+}
+
+@media (max-width: 900px) {
+  html, body, #root {
+    overflow-y: auto;
+  }
+}
+
+/* === Utility: Touch Target === */
+.touch-target {
+  min-width: var(--touch-size);
+  min-height: var(--touch-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Utility: Visually Hidden (for screen readers) === */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* === Improved Focus, Hover, and Active States === */
+button, [role="button"], .action-buttons button, .download-btn, .calendar-nav-btn {
+  outline: none;
+  transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+}
+button:focus-visible, [role="button"]:focus-visible, .action-buttons button:focus-visible, .download-btn:focus-visible, .calendar-nav-btn:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-focus);
+  z-index: 2;
+}
+button:active, [role="button"]:active, .action-buttons button:active, .download-btn:active, .calendar-nav-btn:active {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+/* === Responsive Typography for Headings === */
+h1, .h1 {
+  font-size: var(--font-xl);
+  font-weight: 700;
+  line-height: 1.1;
+  overflow-y: hidden;
+}
+h2, .h2 {
+  font-size: var(--font-lg);
+  font-weight: 600;
+  line-height: 1.15;
+}
+h3, .h3 {
+  font-size: var(--font-md);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+
+
+body::-webkit-scrollbar, 
+html::-webkit-scrollbar, 
+#root::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.app-bg {
+  min-height: 100vh;
+  /* background: linear-gradient(120deg, #0a3d91 0%, #1e5799 100%); */
+  position: relative;
+}
+
+/* Geometric background shapes */
+.app-bg::before, .app-bg::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+/* .app-bg::before {
+  top: 60px;
+  left: 0;
+  width: 45vw;
+  height: 180px;
+  background: linear-gradient(100deg, #fff3 60%, #fff1 100%);
+  clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%);
+}
+.app-bg::after {
+  bottom: 60px;
+  right: 0;
+  width: 30vw;
+  height: 120px;
+  background: linear-gradient(120deg, #fff3 60%, #fff1 100%);
+  clip-path: polygon(30% 0, 100% 0, 100% 100%, 0 100%);
+} */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 40px 0 40px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 8px #0004;
+  position: relative;
+  z-index: 2;
+  /* margin-bottom: 32px; */
+  background: rgba(255,255,255,0.08);
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+  border-bottom: 1.5px solid rgba(255,255,255,0.18);
+  animation: fadeIn 0.8s;
+  height: 95px;
+  overflow-y: hidden
+  ;
+}
+
+.app-header {
+  overflow-y: hidden !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.action-buttons button {
+  background: #e3e9f6;
+  color: #1e5799;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 28px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #0001;
+}
+
+.action-buttons button.active,
+.action-buttons button:focus {
+  background: #1976d2;
+  color: #fff;
+  box-shadow: 0 4px 16px #1976d255;
+}
+
+.action-buttons button:hover:not(:disabled) {
+  background: #b2c6e7;
+  color: #1976d2;
+}
+
+.action-buttons button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+  height: calc(100vh - 110px); /* header + margin */
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.glass-panel {
+  background: rgba(255,255,255,0.14);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  border-radius: 28px;
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255,255,255,0.22);
+  transition: box-shadow 0.3s, background 0.3s;
+  animation: fadeIn 1.2s;
+}
+
+.sidebar, .right-panel {
+  min-width: 220px;
+  max-width: 270px;
+  height: 100%;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 28px;
+  box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+  animation: fadeIn 1.2s;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.sidebar {
+  /* overflow-y: auto; */
+  /* scrollbar-width: none; */
+  /* -ms-overflow-style: none; */
+  overflow: visible !important;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.right-panel {
+  min-width: 220px;
+  max-width: 270px;
+  height: 100%;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 28px;
+  box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+  animation: fadeIn 1.2s;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.calendar-panel {
+  flex: 1 1 0%;
+  max-width: 660px;
+  min-width: 320px;
+  height: 75%;
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 28px;
+  box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.10);
+  animation: fadeIn 1.2s;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.sidebar .section-title {
+  margin-bottom: 5px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.sidebar .CompletedEventsDropdown {
+  margin-bottom: 16px;
+}
+
+/* Completed events card styling */
+.sidebar .CompletedEventsDropdown > div > div {
+  max-width: 100%;
+  word-wrap: break-word;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  /* overflow: hidden; */
+}
+.sidebar.CompletedEventsDropdown::-webkit-scrollbar{
+  display: none;
+}
+
+/* BUTTON HOVER EFFECT Start*/
+.download-btn {
+  width: 100%;
+  margin-bottom: 16px;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+
+.download-btn{
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  padding: 0 2rem;
+  border-radius: 1.5rem;
+  background: #3d3a4e;
+  background-size: 400%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.download-btn:hover:before{
+ transform: scaleX(1);
+}
+.button-content {
+  position: relative;
+  z-index: 1;
+}
+
+.download-btn::before {
+   content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background: linear-gradient(
+    82.3deg,
+    rgba(150, 93, 233, 1) 10.8%,
+    rgba(99, 88, 238, 1) 94.3%
+  );
+  transition: all 0.475s;
+}
+/* BUTTON HOVER EFFECT end*/
+
+
+/* Calendar/MonthView styles */
+.monthview-container,
+.yearview-container,
+.weekview-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Download report modal styles */
+#download-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#download-dialog .modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 320px;
+  max-height: 80vh;
+  overflow-y: auto; /* Allow scrolling */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* Hide scrollbar for all browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+#download-dialog .modal-content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Hide scrollbars on radio button group container */
+#download-dialog .modal-content > div.radio-group {
+  max-height: none;
+  overflow: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+#download-dialog .modal-content > div.radio-group::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Hide scrollbars on radio inputs */
+#download-dialog input[type="radio"] {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#download-dialog input[type="radio"]::-webkit-scrollbar {
+  display: none;
+}
+
+#download-dialog .modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+#download-dialog .download-mode {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+}
+
+#download-dialog .download-mode:hover {
+  background-color: #d62828;
+}
+
+#download-dialog .download-mode:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.6);
+}
+
+/* Hide scrollbars for modal content and buttons */
+#download-dialog .modal-content::-webkit-scrollbar,
+#download-dialog .download-mode::-webkit-scrollbar {
+  display: none;
+}
+
+#download-dialog .modal-content {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+#download-dialog .download-mode {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.calendar-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 350px;
+  margin: 0 auto 24px auto;
+  padding: 0 8px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+  background: transparent;
+}
+
+.calendar-month-label {
+  flex: 1;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 5px #0002;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calendar-nav-btn {
+  background: #036c90;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  padding: 6px 24px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 10px #0001;
+  transition: background 0.15s;
+}
+.calendar-nav-btn:hover {
+  background: #0a3d91;
+}
+
+.calendar-days {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  justify-items: center;
+  align-items: stretch;
+  background: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+.calendar-days::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 8px auto;
+  justify-items: center;
+  flex-shrink: 0;
+}
+
+.calendar-weekday {
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.day {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  min-height: 40px;
+  min-width: 32px;
+  width: 100%;
+  max-width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px #0001;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.2s, color 0.2s;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  z-index: 1;
+  margin: 2px;
+  padding: 4px 0 2px 0;
+}
+
+.day.selected {
+  background: #1180ef;
+  color: #ffffff;
+}
+
+.day.calendar-other {
+  background: #f3f3f3;
+  color: #aaa;
+}
+
+.day .event-dots {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.event-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.event-dot.workshop { background: #1976d2; }
+.event-dot.seminar  { background: #f57c00; }
+.event-dot.fest     { background: #d81b60; }
+.event-dot.sports   { background: #43a047; }
+
+/* Top and bottom glow pseudo-elements */
+.day::before,
+.day::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: #1976d2;
+  filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+.day::before {
+  top: -6px;
+}
+.day::after {
+  bottom: -6px;
+}
+
+.day:hover {
+  background: #e3f0ff;
+  color: #1976d2;
+  border-top-color: #1976d2;
+  border-bottom-color: #1976d2;
+  box-shadow: 0 4px 16px #1976d255;
+}
+
+.day:hover::before,
+.day:hover::after {
+  opacity: 0.5;
+}
+
+.day.today {
+  background: linear-gradient(120deg, #e3f0ff 60%, #b2c6e7 100%);
+  color: #1976d2;
+  font-weight: bold;
+  box-shadow: 0 4px 16px #1976d255;
+}
+
+@media (max-width: 1100px) {
+  .dashboard {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
+    min-height: unset;
+    overflow-y: auto;
+    padding: 10px 0;
+  }
+  .sidebar, .calendar-panel, .right-panel {
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 200px;
+    padding: 10px 4px;
+  }
+  .calendar-panel {
+    height: auto;
+    min-height: 200px;
+    padding: 10px 4px;
+  }
+  .calendar-weekdays {
+    gap: 6px;
+    max-width: 98vw;
+  }
+  .calendar-days {
+    gap: 6px;
+    max-width: 98vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 350px;
+  }
+  .day {
+    min-width: 28px;
+    min-height: 28px;
+    max-width: 32px;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    padding: 2px 0 2px 0;
+  }
+}
+/* Mobile View */
+@media (max-width: 700px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 1.2rem;
+    padding: 12px 4px 0 4px;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .action-buttons {
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .dashboard {
+    padding: 4px 1vw;
+  }
+  .calendar-panel, .sidebar, .right-panel {
+    padding: 6px 2px;
+    border-radius: 16px;
+    min-height: 120px;
+  }
+  .calendar-weekdays {
+    gap: 3px;
+    max-width: 100vw;
+  }
+  .calendar-days {
+    gap: 3px;
+    max-width: 100vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 300px;
+  }
+  .day {
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 24px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    padding: 1px 0 1px 0;
+  }
+  .calendar-month-label {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .app-header {
+    font-size: 1rem;
+    padding: 6px 2px 0 2px;
+    margin-bottom: 8px;
+  }
+  .dashboard {
+    padding: 2px 0;
+    gap: 4px;
+  }
+  .calendar-panel, .sidebar, .right-panel {
+    padding: 2px 1px;
+    border-radius: 10px;
+    min-height: 60px;
+  }
+  .calendar-weekdays {
+    gap: 1px;
+    max-width: 100vw;
+  }
+  .calendar-days {
+    gap: 1px;
+    max-width: 100vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 250px;
+  }
+  .day {
+    min-width: 14px;
+    min-height: 14px;
+    max-width: 16px;
+    font-size: 0.7rem;
+    border-radius: 4px;
+    padding: 0;
+  }
+  .calendar-month-label {
+    font-size: 0.85rem;
+  }
+}
+
+/* WeekView styles */
+.weekview-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 auto;
+  max-width: 540px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.weekview-day-row {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  min-height: 56px;
+  padding: 0 18px;
+  box-shadow: 0 2px 8px rgba(255, 254, 254, 0.067);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  border: 2px solid transparent;
+}
+
+.weekview-day-row.selected {
+  background: #e3f0ff;
+  border-color: #1976d2;
+}
+
+.weekview-day-row:hover {
+  background: #e3f0ff;
+  border-color: #1976d2;
+  box-shadow: 0 2px 16px #1976d255;
+}
+
+.weekview-day-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 20px;
+  min-width: 60px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.weekview-date-label {
+  width: 40px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #403535;
+  text-align: left;
+  padding-right: 18px;
+}
+
+.weekview-events {
+  flex: 1;
+  padding-left: 12px;
+  color: #1976d2;
+  font-weight: 600;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.weekview-no-events {
+  color: #1976d2;
+  font-weight: 600;
+  cursor: default;
+}
+
+.weekview-event-title {
+  display: inline-block;
+  margin-right: 10px;
+  color: #1976d2;
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .weekview-list {
+    max-width: 98vw;
+    gap: 10px;
+  }
+  .weekview-day-row {
+    padding: 0 8px;
+    min-height: 40px;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+  .weekview-day-label, .weekview-date-label {
+    /* width: 44px; */
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: left;
+    color: #1976d2; 
+  }
+}
+
+.weekview-day-row {
+  position: relative; /* Needed for pseudo-elements */
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  min-height: 56px;
+  padding: 0 18px;
+  box-shadow: 0 2px 8px #0001;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, border-color 0.3s;
+  border: 2px solid transparent;
+  margin: 4px 0;
+  z-index: 1;
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+
+.weekview-day-row::before,
+.weekview-day-row::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: #1976d2;
+  filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+.weekview-day-row::before {
+  top: -6px;
+}
+.weekview-day-row::after {
+  bottom: -6px;
+}
+
+.weekview-day-row.selected {
+  background: #e3f0ff;
+  border-color: #1976d2;
+}
+
+.weekview-day-row:hover {
+  background: #e3f0ff;
+  border-color: #1976d2;
+  box-shadow: 0 2px 16px #1976d255;
+}
+
+.weekview-day-row:hover::before,
+.weekview-day-row:hover::after {
+  opacity: 1;
+}
+
+.weekview-day-name{
+width: 3rem;
+}
+
+
+
+.yearview-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.yearview-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.yearview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  flex: 1;
+  /* overflow: hidden; */
+}
+.yearview-grid::-webkit-scrollbar{
+overflow-y: hidden;
+}
+
+.yearview-month-block {
+  background: #f8fafd;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #0001;
+  padding: 12px 12px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 220px;   /* Increase for wider blocks */
+  min-height: 230px;
+  overflow: hidden;
+}
+
+.yearview-month-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #000000;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+  overflow-y: hidden;
+  line-height: 1.2;         /* Add this */
+  padding-bottom: 10px;
+
+}
+
+.yearview-month-calendar {
+  width: 100%;
+  overflow: hidden;
+}
+
+.yearview-weekdays {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+  overflow: hidden;
+}
+
+.yearview-weekday {
+  color: #1976d2;
+  font-weight: 600;
+  font-size: 0.98rem;
+  width: 35px;
+  text-align: center;
+}
+
+.yearview-days {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+   overflow: auto; /* or scroll if you always want scrollability */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+  overflow: hidden;
+}
+
+.yearview-week {
+  display: flex;
+  justify-content: space-between;
+   overflow: auto; /* or scroll if you always want scrollability */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.yearview-day {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.98rem;
+  border-radius: 6px;
+  color: #222;
+  background: transparent;
+  margin: 1px 0;
+  transition: background 0.2s, color 0.2s;
+  overflow: hidden;
+  
+}
+
+.yearview-day:hover {
+  background: #1976d2;
+  color: #fff;
+  cursor: pointer;
+}
+
+.yearview-day-empty {
+  background: none;
+  cursor: default;
+}
+
+.yearview-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.yearview-slider-label {
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+@media (max-width: 900px) {
+  html, body, #root {
+    height: auto;
+    overflow: auto !important;
+  }
+  .dashboard {
+    overflow: visible !important;
+    overflow-x: hidden;
+    height: auto !important;
+    min-height: 100vh;
+    max-height: none;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 900px) {
+  .yearview-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    gap: 18px;
+    max-width: 98vw;
+  }
+  .yearview-month-block {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+.yearview-month-block {
+  margin-top: 10px;
+  background: #f8fafd;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #0001;
+  padding: 18px 12px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.5 ease-in-out;
+}
+
+.yearview-month-block:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px #0002;
+  background: #f0f8ff;
+}
+/* Compact Dashboard Styles for Calendar */
+
+/* Shrink sidebars for compact layout */
+.sidebar, .right-panel {
+  width: 200px;
+  padding: 16px;
+  height: 600px;
+  transition: all 0.3s ease;
+}
+
+/* Default right-panel: center content */
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* When dropdown is visible */
+.right-panel.show-dropdown {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* Completed events section styling */
+.right-panel .section-title:first-child {
+  align-self: flex-start;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+.right-panel .CompletedEventsDropdown {
+  /* align-self: flex-start; */
+  margin-right: 2px;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  height: 70px;
+  margin-bottom: 10px;
+  
+  /* overflow: hidden; */
+}
+
+.section-title{
+  height: 65px;
+  overflow: hidden;
+  margin-bottom: 1px;
+}
+.button-content{
+  padding: 8px;
+}   
+
+/* Adjust download button spacing */
+.download-btn {
+  margin-top: 1px;
+  margin-bottom: 12px;
+  align-self: center;
+}
+
+/* Adjust calendar height */
+.calendar-panel {
+  min-height: 600px;
+  padding: 16px;
+}
+
+/* Optional: shrink calendar cells if needed */
+.day {
+  min-height: 60px;
+  max-width: 58px;
+  font-size: 0.95rem;
+}
+
+/* Ensure dashboard uses full height without scroll */
+.dashboard {
+  height: 90vh;
+  overflow: hidden;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+  .sidebar, .right-panel, .calendar-panel {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.sidebar select[size="5"]::-webkit-scrollbar {
+  display: none;
+}
+.sidebar select[size="5"] {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.divider-line {
+  width: 100%;
+  height: 1.5px;
+  background: rgba(255,255,255,0.15);
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+/* Custom date input styles */
+input[type='date'] {
+  margin-top: 10px;
+  background: rgba(255,255,255,0.12);
+  color: #545454;
+  border: 1px solid #e63946;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.2s, background 0.2s;
+  width: 100%;
+  /* box-sizing: border-box; */
+  margin-bottom: 5px;
+}
+
+input[type='date']:focus {
+  /* border: 1.5px solid #1976d2; */
+  background: rgba(255,255,255,0.18);
+}
+
+.completed-events-dropdown-scrollable {
+  max-height: 11.5em;
+  overflow-y: auto;
+  width: 100%;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.completed-events-dropdown-scrollable::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+
+.right-panel .download-btn {
+  max-height: 3rem;
+  flex-shrink: 0;
+}
+
+/* --- Responsive Enhancements Start --- */
+@media (max-width: 900px) {
+  .dashboard {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    height: auto;
+    min-height: unset;
+    padding: 8px 0;
+  }
+  .sidebar, .right-panel, .calendar-panel {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 120px;
+    padding: 10px 4px;
+    border-radius: 16px;
+  }
+  .calendar-panel {
+    min-width: 0;
+    max-width: 100vw;
+    padding: 10px 4px;
+  }
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 1.2rem;
+    padding: 12px 4px 0 4px;
+    gap: 8px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+    overflow: visible;
+  }
+  .app-header h1 {
+    font-size: 1.2rem;
+    width: 100%;
+    text-align: left;
+    white-space: normal;
+    overflow: visible !important;
+    max-height: none !important;
+    text-overflow: ellipsis;
+    margin-bottom: 8px;
+  }
+  .app-header h1::-webkit-scrollbar {
+    display: none !important;
+  }
+  .action-buttons {
+    margin-top: 8px;
+    z-index: 3;
+    width: 100%;
+    position: relative;
+  }
+  .action-buttons button {
+    min-width: 110px;
+    max-width: 180px;
+    flex: 1 1 32%;
+  }
+  .app-header {
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+  }
+  .app-header h1 {
+    text-align: center;
+    width: 100%;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+}
+@media (max-width: 600px) {
+  .dashboard {
+    gap: 6px;
+    padding: 2px 0;
+  }
+  .sidebar, .right-panel {
+    max-height: 35vh;
+    padding: 4px 2px;
+    gap: 6px;
+    font-size: 0.98rem;
+  }
+  .calendar-panel {
+    margin-bottom: 6px;
+  }
+  .app-header {
+    font-size: 1rem;
+    padding: 6px 2px 0 2px;
+    margin-bottom: 8px;
+  }
+  .action-buttons {
+    /* Revert to previous layout: remove horizontal scroll and flex row */
+    display: block;
+    overflow-x: unset;
+    overflow-y: unset;
+    white-space: normal;
+    gap: unset;
+    width: auto;
+    max-width: 100%;
+    padding-bottom: unset;
+    margin-bottom: 8px;
+    scrollbar-width: unset;
+    -webkit-overflow-scrolling: unset;
+  }
+  .action-buttons button {
+    flex: unset;
+    min-width: unset;
+    max-width: unset;
+    margin: unset;
+    font-size: unset;
+    border-radius: unset;
+  }
+  .view-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0 auto 10px auto;
+    font-size: 1.1rem;
+    padding: 12px 0;
+    border-radius: 14px;
+    box-sizing: border-box;
+    height: 48px;
+    min-height: 48px;
+    line-height: 48px;
+  }
+  .view-menu-dropdown {
+    position: static;
+    margin: 0 auto 10px auto;
+    width: 95%;
+    min-width: 0;
+    max-width: 100%;
+    left: unset;
+    top: unset;
+    border-radius: 14px;
+    box-sizing: border-box;
+  }
+  .view-menu-dropdown button {
+    font-size: 1.05rem;
+    padding: 14px 0;
+    border-radius: 0;
+    height: 48px;
+    min-height: 48px;
+    line-height: 48px;
+  }
+  .view-menu-dropdown button.active {
+    background: #e3e9f6;
+    color: #1976d2;
+    font-weight: bold;
+  }
+  .view-menu-dropdown button:hover {
+    background: #f0f8ff;
+  }
+  .action-buttons button {
+    min-width: 70px;
+    font-size: 0.95rem;
+    padding: 8px 0;
+    flex: 1 1 45%;
+    margin: 0 1px;
+    border-radius: 10px;
+  }
+  .section-title {
+    font-size: 1rem;
+    margin-bottom: 4px;
+    overflow: hidden;
+  }
+  .download-btn {
+    font-size: 0.95rem;
+    padding: 6px 1rem;
+    height: 2.5rem;
+  }
+}
+/* --- Responsive Enhancements End --- */
+
+@media (max-width: 900px) {
+  .calendar-days {
+    grid-template-columns: repeat(7, minmax(24px, 1fr));
+    gap: 2px;
+    max-width: 100vw;
+    padding: 0 2px;
+  }
+  .day {
+    min-width: 22px;
+    min-height: 22px;
+    max-width: 32px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    padding: 1px 0;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 600px) {
+  .calendar-days {
+    grid-template-columns: repeat(7, minmax(16px, 1fr));
+    gap: 1px;
+    max-width: 100vw;
+    padding: 0 1px;
+  }
+  .day {
+    min-width: 14px;
+    min-height: 14px;
+    max-width: 18px;
+    font-size: 0.5rem;
+    border-radius: 4px;
+    padding: 0;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 900px) {
+  .view-menu-dropdown {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+  }
+  .view-menu-dropdown > div,
+  .view-menu-dropdown button {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px #0002;
+    min-width: 180px;
+    margin: 0 8px;
+    font-size: 1.15rem;
+    color: #1976d2;
+    padding: 18px 0;
+    text-align: center;
+    border: none;
+    margin-bottom: 8px;
+  }
+  .view-menu-dropdown button.active {
+    background: #e3e9f6;
+    color: #1976d2;
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 1200px) {
+  .app-header {
+    min-height: unset;
+    padding-top: unset;
+    padding-bottom: unset;
+  }
+}
+
+.hamburger-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #1976d2;
+  margin-left: 8px;
+  cursor: pointer;
+  overflow-y: hidden;
+}
+
+@media (max-width: 1024px) and (min-width: 601px) {
+  .dashboard,
+  .calendar-panel {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  .yearview-container {
+    height: 80vh !important;
+    overflow-y: auto !important;
+  }
+  .yearview-grid {
+    height: auto !important;
+    flex: unset !important;
+    /* The overflow rule has been removed */
+  }
+  .agenda-view,
+  .weekview-container {
+    overflow-y: auto;
+    max-height: 80vh;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+} 
+
+@media (max-width: 900px) {
+  .calendar-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    width: 100% !important;
+    left: 50%;
+    padding: 0 8px;
+    background: var(--color-bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    min-height: 56px;
+    box-sizing: border-box;
+    overflow: visible !important;
+  }
+  .calendar-nav-btn {
+    flex: 0 0 48px;
+    width: 48px;
+    min-width: 48px;
+    max-width: 48px;
+    min-height: 44px;
+    font-size: 1.3rem;
+    border-radius: 12px;
+    background: var(--color-primary);
+    color: var(--color-primary-contrast);
+    border: none;
+    margin: 0 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .calendar-month-label {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 60vw;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: none;
+  }
+} 
+
+
+/* === Custom Date Modal & Download Styles === */
+#download-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(20, 28, 48, 0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+#download-dialog .modal-content {
+  background: #23273a;
+  border-radius: 16px;
+  padding: 32px 24px;
+  width: 100%;
+  max-width: 420px;
+  color: #f5f6fa;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.custom-date-modal-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  width: 100%;
+}
+.custom-date-fields {
+  background: rgba(36, 44, 70, 0.98);
+  border-radius: 14px;
+  border: 1.5px solid #2d3a5a;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  padding: 28px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 100%;
+  max-width: 420px; /* or 100% for mobile */
+  box-sizing: border-box;
+  padding: 0; /* Remove horizontal padding */
+  margin: 0 auto;
+}
+.custom-date-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 18px 0;
+  padding: 0;
+}
+.custom-date-label {
+  font-size: 1.04rem;
+  color: #e0e6f7;
+  font-weight: 600;
+  margin-bottom: 2px;
+  letter-spacing: 0.01em;
+}
+.custom-date-input {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1.5px solid #e63946; /* or your preferred color */
+  border-radius: 7px;
+  background: #373b4d; /* slightly lighter for contrast */
+  color: #f5f6fa;
+  font-size: 1.08rem;
+  outline: none;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  transition: border 0.2s, background 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* Remove overflow if present */
+  overflow: visible;
+}
+.custom-date-input:focus {
+  border-color: #1976d2;
+  background: #27304a;
+}
+.custom-date-input::placeholder {
+  color: #b3c6e0;
+  opacity: 1;
+}
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+.button-group button,
+.custom-range-download-btn {
+  width: 100%;
+  padding: 14px 0;
+  font-size: 1.08rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  transition: background 0.18s, transform 0.13s, box-shadow 0.18s;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+  margin-bottom: 0;
+}
+.button-group button:last-child {
+  margin-bottom: 0;
+}
+.button-group button {
+  background: #1976d2;
+  color: #fff;
+}
+.button-group button:hover {
+  background: #1455a0;
+}
+.button-group .cancel-button {
+  background: #e63946;
+  color: #fff;
+}
+.button-group .cancel-button:hover {
+  background: #b71c1c;
+}
+.custom-range-download-btn {
+  background: linear-gradient(90deg, #1976d2 0%, #2196f3 100%);
+  color: #fff;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+.custom-range-download-btn:hover {
+  background: linear-gradient(90deg, #1565c0 0%, #1976d2 100%);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(25, 118, 210, 0.22);
+}
+#download-dialog .modal-content h3 {
+  margin-bottom: 10px;
+  color: #f5f5f6;
+  font-weight: 700;
+  text-align: center;
+}
+@media (max-width: 480px) {
+  #download-dialog .modal-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 14px 2vw;
+    border-radius: 10px;
+  }
+  .custom-date-fields {
+    padding: 12px 2px;
+    max-width: 100%;
+  }
+  .custom-date-row {
+    margin-bottom: 8px;
+  }
+  .custom-date-label {
+    font-size: 0.98rem;
+  }
+  .custom-date-input {
+    font-size: 0.98rem;
+    padding: 10px 10px;
+    width: 100%;
+  }
+  .button-group button,
+  .custom-range-download-btn {
+    font-size: 1rem;
+    padding: 12px 0;
+    border-radius: 7px;
+  }
+} 
+
+.button-group,
+.custom-range-download-btn {
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+  margin: 0 auto;
+} 
+
+#download-dialog .modal-content input[type="date"] {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1.5px solid #e63946;
+  border-radius: 7px;
+  background: #373b4d;
+  color: #f5f6fa;
+  font-size: 1.08rem;
+  outline: none;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  transition: border 0.2s, background 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  overflow: visible;
+}
+
+.up {
+  overflow-y: auto;           /* Enables vertical scrolling */
+  scrollbar-width: none;      /* Hides scrollbar in Firefox */
+  -ms-overflow-style: none;   /* Hides scrollbar in Internet Explorer 10+ */
+}
+
+.up::-webkit-scrollbar {
+  display: none;              /* Hides scrollbar in Chrome, Safari, Opera */
+}
+
+
+
+.completed-event-card-outer{
+   scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth; 
+  max-height: 500px;
+}
+
+
+.completed-event-card-outer::-webkit-scrollbar{
+    display: none; 
+}
+
+.modal-1{
+  padding: '16px';
+  max-Height: '80px';
+  text-align: center;
+}
+.modal-1{
+scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth; 
+}
+.modal-1::-webkit-scrollbar{
+  display: none;
+}
+
+.left-box {
+ scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth; 
+   /* max-height: 8em; */
+   width: 100%;
+   margin: 1px;
+}
+
+.left-box::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.section-title-1{
+  overflow: hidden;
+  /* max-height: 11em; */
+  padding: 1px;
+  text-align: center;
+  margin-bottom: 50px;
+  color: #090909;
+  font-weight: 700;
+  
+}

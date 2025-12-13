@@ -1,0 +1,94 @@
+import React from "react";
+import EventOverflowIndicator from "./EventOverflowIndicator";
+
+// Helper to get week range (Sunday-Saturday) for a given date
+function getWeekRange(date) {
+  const start = new Date(date);
+  start.setDate(date.getDate() - date.getDay());
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
+  return { start, end };
+}
+
+const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+export default function WeekView({
+  weekDate,           // JS Date for any day in the week (e.g., today)
+  selectedDate,       // JS Date or string (YYYY-MM-DD)
+  onSelectDate,       // function(dateStr)
+  onPrevWeek,         // function()
+  onNextWeek,         // function()
+  events = []         // [{ date: "YYYY-MM-DD", ... }]
+}) {
+  const { start, end } = getWeekRange(weekDate);
+
+  // Format week label
+  const weekLabel = `${start.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })} - ${end.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}`;
+
+  // Get date strings for each day in the week
+  const weekDays = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(start);
+    d.setDate(start.getDate() + i);
+    return d;
+  });
+
+  // Helper
+  function formatDate(date) {
+    return date.toISOString().slice(0, 10);
+  }
+
+  return (
+    <div className="weekview-container">
+      <div
+        className="calendar-topbar"
+        style={window.innerWidth <= 900 ? {
+          height: 60,
+          position: 'sticky',
+          top: 0,
+          zIndex: 10,
+          background: 'var(--color-bg)',
+          width: '100vw',
+          overflowX: 'auto',
+        } : {}}
+      >
+        <button className="calendar-nav-btn" onClick={onPrevWeek}>&lt;</button>
+        <span className="calendar-month-label">{weekLabel}</span>
+        <button className="calendar-nav-btn" onClick={onNextWeek}>&gt;</button>
+      </div>
+      <div className="weekview-list">
+        {weekDays.map((date, idx) => {
+          const dateStr = formatDate(date);
+          const dayEvents = events.filter(ev => ev.date === dateStr);
+          const isSelected = selectedDate === dateStr;
+          return (
+            <div
+              key={dateStr}
+              className={`weekview-day-row${isSelected ? " selected" : ""}`}
+              onClick={() => onSelectDate(dateStr)}
+            >
+              <div className="weekview-day-label">
+                <span
+                  className="weekview-day-name"
+                  style={{ color: '#111' }}
+                >
+                  {WEEKDAYS[date.getDay()]}
+                </span>
+                <span
+                  className="weekview-day-number"
+                  style={{ color: '#111' }}
+                >
+                  {date.getDate().toString().padStart(2, '0')}
+                </span>
+              </div>
+              <div className="weekview-events">
+                <EventOverflowIndicator events={dayEvents} renderEvent={ev => (
+                  <span key={ev.title} className="weekview-event-title">{ev.title}</span>
+                )} />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
