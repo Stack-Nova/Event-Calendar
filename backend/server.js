@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 8000;
 const MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/Event";
 
-const CLIENT_ORIGIN = "https://kiris-ka-gana-sunega.vercel.app"
+const CLIENT_ORIGIN = "https://event-calendar-alpha-red.vercel.app"
 
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "admin@example.com";
 const SMTP_USER = process.env.SMTP_USER || "";
@@ -184,8 +184,65 @@ app.post("/api/signup", async (req, res) => {
           to: ADMIN_EMAIL,
           from: 'stacknovaa@gmail.com',
           subject: "New Signup Request Pending Approval",
-          text: `A new user has requested signup.\nUsername: ${username}\nEmail: ${email}`,
-        }
+          html: `
+            <div style="font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 30px;">
+              <div style="max-width: 600px; margin: auto; background: #ffffff; border-radius: 8px; padding: 24px;">
+                
+                <h2 style="color: #333333; margin-bottom: 10px;">
+                  🚀 New Signup Request
+                </h2>
+
+                <p style="color: #555555; font-size: 15px;">
+                  A new user has requested access to the platform. Please review the details below and take the necessary action.
+                </p>
+
+                <table style="width: 100%; margin-top: 16px; border-collapse: collapse;">
+                  <tr>
+                    <td style="padding: 8px 0; color: #666;">Username:</td>
+                    <td style="padding: 8px 0; font-weight: bold;">${username}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 8px 0; color: #666;">Email:</td>
+                    <td style="padding: 8px 0; font-weight: bold;">${email}</td>
+                  </tr>
+                </table>
+
+                <div style="text-align: center; margin-top: 30px;">
+                  <a 
+                    href="https://event-calendar-alpha-red.vercel.app/login"
+                    style="
+                      background-color: #4f46e5;
+                      color: #ffffff;
+                      text-decoration: none;
+                      padding: 12px 22px;
+                      border-radius: 6px;
+                      font-size: 15px;
+                      display: inline-block;
+                    "
+                  >
+                    Review Signup Request
+                  </a>
+                </div>
+
+                <p style="margin-top: 25px; font-size: 13px; color: #888888;">
+                  If the button doesn’t work, copy and paste this link into your browser:
+                  <br />
+                  <a href="https://event-calendar-alpha-red.vercel.app/login" style="color: #4f46e5;">
+                    https://event-calendar-alpha-red.vercel.app/login
+                  </a>
+                </p>
+
+                <hr style="margin: 30px 0; border: none; border-top: 1px solid #eeeeee;" />
+
+                <p style="font-size: 12px; color: #aaaaaa; text-align: center;">
+                  © ${new Date().getFullYear()} StackNova · All rights reserved
+                </p>
+
+              </div>
+            </div>
+          `,
+        };
+
         
         sgMail
         .send(msg)
