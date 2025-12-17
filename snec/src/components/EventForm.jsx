@@ -7,7 +7,8 @@ const EVENT_TYPES = [
   { value: 'workshop', label: 'Workshop' },
   { value: 'seminar', label: 'Seminar' },
   { value: 'fest', label: 'Fest' },
-  { value: 'sports', label: 'Sports' }
+  { value: 'sports', label: 'Sports' },
+  { value: 'other', label: 'Other'}
 ];
 
 export default function EventForm({ onEventAdded }) {
@@ -74,7 +75,7 @@ export default function EventForm({ onEventAdded }) {
           <form onSubmit={handleSubmit}>
             {/* Custom Event Type Selector */}
             <div className="form-group">
-              <label htmlFor="type">Type</label>
+              <label htmlFor="type">Type<span className='form-required'>*</span></label>
               <div style={{ display: 'flex', gap: 12, marginBottom: 8 }}>
                 {EVENT_TYPES.map(opt => (
                   <button
@@ -111,7 +112,7 @@ export default function EventForm({ onEventAdded }) {
             </div>
             {/* Title */}
             <div className="form-group">
-              <label id="title-view" htmlFor="title">Title</label>
+              <label id="title-view" htmlFor="title">Title<span className='form-required'>*</span></label>
               <input
                 type="text"
                 id="title"
@@ -123,7 +124,7 @@ export default function EventForm({ onEventAdded }) {
 
             {/* Organizer */}
             <div className="form-group">
-              <label htmlFor="organizer">Organizer</label>
+              <label htmlFor="organizer">Organizer<span className='form-required'>*</span></label>
               <input
                 type="text"
                 id="organizer"
@@ -135,7 +136,7 @@ export default function EventForm({ onEventAdded }) {
 
             {/* Date */}
             <div className="form-group">
-              <label htmlFor="date">Date</label>
+              <label htmlFor="date">Date<span className='form-required'>*</span></label>
               <input
                 type="date"
                 id="date"
@@ -147,7 +148,7 @@ export default function EventForm({ onEventAdded }) {
 
             {/* Time */}
             <div className="form-group">
-              <label htmlFor="time">Time</label>
+              <label htmlFor="time">Time<span className='form-required'>*</span></label>
               <input
                 type="time"
                 id="time"
@@ -159,7 +160,7 @@ export default function EventForm({ onEventAdded }) {
 
             {/* Duration */}
             <div className="form-group">
-              <label htmlFor="duration">Duration (minutes)</label>
+              <label htmlFor="duration">Duration (minutes)<span className='form-required'>*</span></label>
               <input
                 type="number"
                 id="duration"
@@ -177,7 +178,7 @@ export default function EventForm({ onEventAdded }) {
 
             {/* Location */}
             <div className="form-group">
-              <label htmlFor="location">Location</label>
+              <label htmlFor="location">Location<span className='form-required'>*</span></label>
               <input
                 type="text"
                 id="location"
@@ -201,7 +202,7 @@ export default function EventForm({ onEventAdded }) {
 
             {/* Description */}
             <div className="form-group">
-              <label htmlFor="description">Description</label>
+              <label htmlFor="description">Description<span className='form-required'>*</span></label>
               <textarea
                 id="description"
                 rows="5"

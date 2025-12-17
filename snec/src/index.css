@@ -367,6 +367,10 @@ border: 1px solid rgba(255, 255, 255, 0.45);
     font-size: 1em;
 }
 
+.form-required {
+    color: #e63946;
+}
+
 .event-dots {
     display: flex;
     gap: 4px;
