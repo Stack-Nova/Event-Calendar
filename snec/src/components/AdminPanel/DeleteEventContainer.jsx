@@ -38,7 +38,8 @@ export default function DeleteEventContainer() {
     setError('');
     try {
       const res = await axios.get('/api/events');
-      // if (res.statusText !== "OK") throw new Error('Failed to fetch events');
+      console.log(res);
+      if (res.statusText !== "OK") throw new Error('Failed to fetch events');
 
       const data = await res.data;
 
