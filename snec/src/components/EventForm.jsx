@@ -96,15 +96,6 @@ export default function EventForm({ onEventAdded }) {
                       transition: 'border 0.2s, background 0.2s',
                     }}
                   >
-                    <span style={{
-                      display: 'inline-block',
-                      width: 14,
-                      height: 14,
-                      borderRadius: '50%',
-                      background: eventTypeColors[opt.value],
-                      marginRight: 8,
-                      border: '1px solid #fff',
-                    }} />
                     {opt.label}
                   </button>
                 ))}
