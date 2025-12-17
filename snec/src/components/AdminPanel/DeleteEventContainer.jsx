@@ -38,7 +38,12 @@ export default function DeleteEventContainer() {
     try {
       const res = await fetch('/api/events');
       if (!res.ok) throw new Error('Failed to fetch events');
+
+      console.log("fetch events api reponse", res);
+
       const data = await res.json();
+      console.log("loggin jsonify data: ", data);
+
       setEvents(data);
     } catch (e) {
       setError(e.message);
