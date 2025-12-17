@@ -65,7 +65,7 @@ app.use("/api/admin", adminRoutes);
 app.get("/api/events", async (req, res) => {
   try {
     const events = await Listing.find();
-    res.json(events);
+    return res.json(events);
   } catch (error) {
     console.error("Error fetching events:", error);
     res

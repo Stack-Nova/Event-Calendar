@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../AdminPanel/AdminPanel.css';
+import axios from 'axios';
 
 const API_BASE = '/api/admin';
 
-function apiFetch(path, adminSecret, options = {}) {
+async function apiFetch(path, adminSecret, options = {}) {
   return fetch(API_BASE + path, {
     ...options,
     headers: {
@@ -36,13 +37,10 @@ export default function DeleteEventContainer() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('/api/events');
-      if (!res.ok) throw new Error('Failed to fetch events');
+      const res = await axios.get('/api/events');
+      if (res.statusText !== "OK") throw new Error('Failed to fetch events');
 
-      console.log("fetch events api reponse", res);
-
-      const data = await res.json();
-      console.log("loggin jsonify data: ", data);
+      const data = await res.data;
 
       setEvents(data);
     } catch (e) {
