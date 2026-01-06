@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../AdminPanel/AdminPanel.css';
 
-const API_BASE = '/api/admin';
+const API_BASE = 'https://event-calendar-backend-1bzo.onrender.com/api/admin';
 
 function apiFetch(path, adminSecret, options = {}) {
   return fetch(API_BASE + path, {
@@ -36,7 +36,7 @@ export default function DeleteEventContainer() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('/api/events');
+      const res = await fetch('https://event-calendar-backend-1bzo.onrender.com/api/events');
       if (!res.ok) throw new Error('Failed to fetch events');
       const data = await res.json();
       setEvents(data);
